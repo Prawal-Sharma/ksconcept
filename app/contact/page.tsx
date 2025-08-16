@@ -225,13 +225,88 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Section Placeholder */}
+      {/* Service Area Map Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl font-bold mb-6 text-center">Service Area</h2>
-            <div className="bg-gray-200 h-96 rounded-lg flex items-center justify-center">
-              <p className="text-gray-500">Interactive map coming soon</p>
+            
+            {/* Google Maps Embed - DFW Area */}
+            <div className="rounded-lg overflow-hidden shadow-lg mb-8">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d429174.1415992521!2d-97.09558369999999!3d32.733813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c19f77b45974b%3A0xb9ec9ba4f647678f!2sDallas-Fort%20Worth%20metroplex!5e0!3m2!1sen!2sus!4v1702665894581!5m2!1sen!2sus"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full"
+                title="KS Concepts Service Area Map"
+              />
+            </div>
+
+            {/* Service Area Cities */}
+            <div className="bg-white rounded-lg p-8 shadow-sm">
+              <h3 className="text-xl font-semibold mb-4 text-center">Areas We Proudly Serve</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div>
+                  <h4 className="font-semibold text-baby-blue-600 mb-3">Primary Service Areas</h4>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-center gap-2">
+                      <span className="text-baby-blue-500">•</span> Cedar Hill
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-baby-blue-500">•</span> Grand Prairie
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-baby-blue-500">•</span> DeSoto
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-baby-blue-500">•</span> Duncanville
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-baby-blue-600 mb-3">Extended Coverage</h4>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-center gap-2">
+                      <span className="text-baby-blue-500">•</span> Arlington
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-baby-blue-500">•</span> Mansfield
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-baby-blue-500">•</span> Midlothian
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-baby-blue-500">•</span> Red Oak
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-baby-blue-600 mb-3">Greater DFW Area</h4>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-center gap-2">
+                      <span className="text-baby-blue-500">•</span> Dallas
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-baby-blue-500">•</span> Fort Worth
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-baby-blue-500">•</span> Irving
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-baby-blue-500">•</span> And surrounding communities
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="mt-6 text-center text-gray-600">
+                <p className="text-sm">
+                  Don&apos;t see your city listed? Contact us to discuss your project - we may be able to serve your area!
+                </p>
+              </div>
             </div>
           </div>
         </div>
