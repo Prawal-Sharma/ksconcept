@@ -56,17 +56,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Quote Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <blockquote className="text-2xl md:text-3xl font-light italic text-gray-700 mb-4">
-              &quot;The best way to predict the future is to build it.&quot;
-            </blockquote>
-            <cite className="text-lg text-gray-600">— Peter Drucker</cite>
-          </div>
-        </div>
-      </section>
 
       {/* Company Story */}
       <section className="py-16 bg-gray-50">

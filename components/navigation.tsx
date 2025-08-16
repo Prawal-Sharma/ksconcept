@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -21,8 +22,17 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-baby-blue-500 to-baby-blue-400 rounded-lg flex items-center justify-center">
+            {/* Logo - Replace /logo.png with your actual logo file */}
+            <div className="w-12 h-12 bg-baby-blue-500 rounded-lg flex items-center justify-center p-1">
               <span className="text-white font-bold text-xl">KS</span>
+              {/* Uncomment below when logo.png is added to public folder */}
+              {/* <Image 
+                src="/logo.png" 
+                alt="KS Concepts Logo" 
+                width={48} 
+                height={48}
+                className="object-contain"
+              /> */}
             </div>
             <span className="font-semibold text-xl">Concepts</span>
           </Link>
