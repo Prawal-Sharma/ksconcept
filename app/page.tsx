@@ -160,18 +160,16 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-12 h-12 bg-baby-blue-500 rounded-lg flex items-center justify-center p-1">
-                  <span className="text-white font-bold text-xl">KS</span>
-                  {/* Uncomment below when logo.png is added to public folder */}
-                  {/* <Image 
+                <div className="w-14 h-14 flex items-center justify-center">
+                  <Image 
                     src="/logo.png" 
                     alt="KS Concepts Logo" 
-                    width={48} 
-                    height={48}
+                    width={56} 
+                    height={56}
                     className="object-contain"
-                  /> */}
+                  />
                 </div>
-                <span className="font-semibold text-xl">Concepts</span>
+                <span className="font-semibold text-xl text-gray-800">Concepts</span>
               </div>
               <p className="text-gray-600 text-sm">
                 Custom home builder serving the DFW area with precision and quality.
