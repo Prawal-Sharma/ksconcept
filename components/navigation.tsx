@@ -2,12 +2,22 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
+import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -18,11 +28,20 @@ const Navigation = () => {
   ]
 
   return (
-    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b">
+    <nav className={cn(
+      "fixed top-0 w-full z-50 transition-all duration-300",
+      scrolled 
+        ? "bg-white/95 backdrop-blur-md shadow-md border-b" 
+        : "bg-white/80 backdrop-blur-sm border-b border-gray-100"
+    )}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-14 h-14 flex items-center justify-center">
+          <Link href="/" className="flex items-center space-x-2 group">
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+              className="w-14 h-14 flex items-center justify-center"
+            >
               <Image 
                 src="/logo.png" 
                 alt="KS Concepts Logo" 
@@ -31,8 +50,8 @@ const Navigation = () => {
                 className="object-contain"
                 priority
               />
-            </div>
-            <span className="font-semibold text-xl text-gray-800">Concepts</span>
+            </motion.div>
+            <span className="font-semibold text-xl text-gray-800 group-hover:text-baby-blue-600 transition-colors">Concepts</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -41,9 +60,10 @@ const Navigation = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-700 hover:text-baby-blue-600 transition-colors duration-200 font-medium"
+                className="relative text-gray-700 hover:text-baby-blue-600 transition-colors duration-200 font-medium group"
               >
                 {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-baby-blue-600 transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </div>

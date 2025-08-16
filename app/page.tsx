@@ -1,7 +1,11 @@
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Home, Hammer, Ruler } from "lucide-react";
+import { MotionWrapper, StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
 
 export default function HomePage() {
   return (
@@ -14,27 +18,53 @@ export default function HomePage() {
         </div>
         
         <div className="relative z-10 text-center text-white max-w-5xl mx-auto px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
+          >
             Rooted In Craft.
-            <span className="block text-baby-blue-400">Building Your Future.</span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-100">
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="block text-baby-blue-400"
+            >
+              Building Your Future.
+            </motion.span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-100"
+          >
             KS Concepts creates custom homes distinguished by timeless design, meticulous craftsmanship, and uncompromising quality.
-          </p>
-          <div className="flex gap-4 justify-center">
-            <Button size="lg" className="bg-baby-blue-500 hover:bg-baby-blue-600 text-white">
-              View Our Projects
-            </Button>
-            <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm text-white border-white hover:bg-white/20">
-              Get in Touch
-            </Button>
-          </div>
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            className="flex gap-4 justify-center"
+          >
+            <Link href="/projects">
+              <Button size="lg" className="bg-baby-blue-500 hover:bg-baby-blue-600 text-white transition-all hover:scale-105 hover:shadow-lg">
+                View Our Projects
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm text-white border-white hover:bg-white/20 transition-all hover:scale-105">
+                Get in Touch
+              </Button>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       {/* Introduction Section */}
       <section className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
+        <MotionWrapper className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">
             Excellence in Every Detail
           </h2>
@@ -43,89 +73,118 @@ export default function HomePage() {
             Our commitment to quality craftsmanship and thoughtful design ensures that your custom home 
             stands as a lasting reflection of excellence.
           </p>
-        </div>
+        </MotionWrapper>
       </section>
 
       {/* Services Preview */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            What We Do
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <Home className="w-12 h-12 text-baby-blue-500 mb-4" />
-              <h3 className="text-xl font-semibold mb-3">Custom Homes</h3>
-              <p className="text-gray-600">
-                Bringing your vision to life with personalized design and superior craftsmanship.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <Ruler className="w-12 h-12 text-baby-blue-500 mb-4" />
-              <h3 className="text-xl font-semibold mb-3">Land Development</h3>
-              <p className="text-gray-600">
-                Full-service land surveying and development to maximize your property&apos;s potential.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <Hammer className="w-12 h-12 text-baby-blue-500 mb-4" />
-              <h3 className="text-xl font-semibold mb-3">Complete Construction</h3>
-              <p className="text-gray-600">
-                From foundation to finishing touches, we handle every aspect of your build.
-              </p>
-            </div>
-          </div>
-          <div className="text-center mt-12">
+          <MotionWrapper>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+              What We Do
+            </h2>
+          </MotionWrapper>
+          <StaggerContainer className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <StaggerItem>
+              <motion.div 
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow h-full"
+              >
+                <Home className="w-12 h-12 text-baby-blue-500 mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Custom Homes</h3>
+                <p className="text-gray-600">
+                  Bringing your vision to life with personalized design and superior craftsmanship.
+                </p>
+              </motion.div>
+            </StaggerItem>
+            <StaggerItem>
+              <motion.div 
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow h-full"
+              >
+                <Ruler className="w-12 h-12 text-baby-blue-500 mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Land Development</h3>
+                <p className="text-gray-600">
+                  Full-service land surveying and development to maximize your property&apos;s potential.
+                </p>
+              </motion.div>
+            </StaggerItem>
+            <StaggerItem>
+              <motion.div 
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow h-full"
+              >
+                <Hammer className="w-12 h-12 text-baby-blue-500 mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Complete Construction</h3>
+                <p className="text-gray-600">
+                  From foundation to finishing touches, we handle every aspect of your build.
+                </p>
+              </motion.div>
+            </StaggerItem>
+          </StaggerContainer>
+          <MotionWrapper delay={0.4} className="text-center mt-12">
             <Link href="/services">
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" className="transition-all hover:scale-105 hover:shadow-md">
                 View All Services
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-          </div>
+          </MotionWrapper>
         </div>
       </section>
 
       {/* Featured Projects Preview */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Current Projects
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="group cursor-pointer">
-              <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg overflow-hidden mb-4">
-                <div className="w-full h-full flex items-center justify-center text-gray-500">
-                  [Cedar Hill Project Image]
+          <MotionWrapper>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+              Current Projects
+            </h2>
+          </MotionWrapper>
+          <StaggerContainer className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <StaggerItem>
+              <motion.div 
+                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                className="group cursor-pointer"
+              >
+                <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg overflow-hidden mb-4">
+                  <div className="w-full h-full flex items-center justify-center text-gray-500">
+                    [Cedar Hill Project Image]
+                  </div>
                 </div>
-              </div>
-              <h3 className="text-xl font-semibold mb-2 group-hover:text-baby-blue-600 transition-colors">
-                Cedar Hill Custom Residence
-              </h3>
-              <p className="text-gray-600 mb-2">
-                Modern luxury home featuring open concept design and sustainable materials.
-              </p>
-              <p className="text-sm text-baby-blue-600 font-medium">
-                Expected Completion: Spring 2025
-              </p>
-            </div>
-            <div className="group cursor-pointer">
-              <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg overflow-hidden mb-4">
-                <div className="w-full h-full flex items-center justify-center text-gray-500">
-                  [Grand Prairie Project Image]
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-baby-blue-600 transition-colors">
+                  Cedar Hill Custom Residence
+                </h3>
+                <p className="text-gray-600 mb-2">
+                  Modern luxury home featuring open concept design and sustainable materials.
+                </p>
+                <p className="text-sm text-baby-blue-600 font-medium">
+                  Expected Completion: Spring 2025
+                </p>
+              </motion.div>
+            </StaggerItem>
+            <StaggerItem>
+              <motion.div 
+                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                className="group cursor-pointer"
+              >
+                <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg overflow-hidden mb-4">
+                  <div className="w-full h-full flex items-center justify-center text-gray-500">
+                    [Grand Prairie Project Image]
+                  </div>
                 </div>
-              </div>
-              <h3 className="text-xl font-semibold mb-2 group-hover:text-baby-blue-600 transition-colors">
-                Grand Prairie Estate Home
-              </h3>
-              <p className="text-gray-600 mb-2">
-                Elegant traditional design with modern amenities and custom woodworking throughout.
-              </p>
-              <p className="text-sm text-baby-blue-600 font-medium">
-                Expected Completion: Summer 2025
-              </p>
-            </div>
-          </div>
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-baby-blue-600 transition-colors">
+                  Grand Prairie Estate Home
+                </h3>
+                <p className="text-gray-600 mb-2">
+                  Elegant traditional design with modern amenities and custom woodworking throughout.
+                </p>
+                <p className="text-sm text-baby-blue-600 font-medium">
+                  Expected Completion: Summer 2025
+                </p>
+              </motion.div>
+            </StaggerItem>
+          </StaggerContainer>
           <div className="text-center mt-12">
             <Link href="/projects">
               <Button size="lg" className="bg-baby-blue-500 hover:bg-baby-blue-600 text-white">
