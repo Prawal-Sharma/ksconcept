@@ -32,13 +32,30 @@ export default function ContactPage() {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log("Form data:", data);
-    setIsSubmitting(false);
-    setSubmitSuccess(true);
-    reset();
-    setTimeout(() => setSubmitSuccess(false), 5000);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setSubmitSuccess(true);
+        reset();
+        setTimeout(() => setSubmitSuccess(false), 5000);
+      } else {
+        console.error('Failed to send email');
+        alert('Failed to send message. Please try again or contact us directly.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to send message. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
